@@ -1,0 +1,200 @@
+%!TEX root = Thesis.tex
+%% ----------------------------------------------------------------
+%% Author: Alex Schlosser
+%%         schlosser@st.cs.uni-saarland.de
+%% ---------------------------------------------------------------- 
+
+% Set up the document
+\documentclass[a4paper, 11pt, twoside]{Thesis}  % Use the "Thesis" style defined in Thesis.cls
+\graphicspath{{./Figures/}}  % Location of the graphics files (set up for graphics to be in PDF format)
+\setchapterpath{./Chapters/}
+
+% Include any extra LaTeX packages required
+\usepackage[square, numbers, comma, sort&compress]{natbib}  % Use the "Natbib" style for the references in the Bibliography
+\usepackage{verbatim}  % Needed for the "comment" environment to make LaTeX comments
+\usepackage{verbatimbox}
+\usepackage[usenames]{xcolor}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{framed}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{stmaryrd}
+\usepackage{framed}
+\usepackage{hyperref}
+\usepackage{todonotes}
+\reversemarginpar
+\presetkeys{todonotes}{inline, size=\tiny, prepend, caption={TODO}}{}
+\usepackage{listings}
+\lstset{language=C,numbers=left}
+\usepackage{longtable}
+\usepackage{multicol}
+
+
+%% Specify thesis parameters here
+%% ----------------------------------------------------------------
+\setboolean  {proposal}{false} % disables all stuff that is not needed for a proposal if set to true
+\university  {Saarland University}{http://www.uni-saarland.de/}
+\department  {Department of Computer Science}{http://www.cs.uni-saarland.de/}
+\group       {Software Engineering Chair}{http://www.st.cs.uni-saarland.de/}
+\faculty     {Faculty of Natural Sciences and Technology I}{http://www.uni-saarland.de/en/campus/faculties/faculties/faculty-6-natural-sciences-and-technology-i.html}
+\supervisor  {Your Supervisor}
+\advisor     {Your Advisor}
+\examiner    {Who will be grading your thesis}
+\degree      {Master of Science}
+\thesiskind  {Master Thesis}
+\authors     {Your name}
+\thesistitle {The title of your thesis}
+\date        {\today}
+%\subject     {}
+%\keywords    {}
+%% ----------------------------------------------------------------
+
+% If this is a proposal prepend 'Proposal for a' to thesiskind
+\doifproposal{
+	\let\thesisnameproposal\thesisname
+	\thesiskind{Proposal for a \thesisnameproposal}
+}
+
+% Enable git revision parsing (Note: you need to enable shell-excape and pipe support for this feature to work)
+%\revision{\input{|"git rev-parse HEAD | cut -c 1-8"}}
+
+\begin{document}
+\frontmatter	  % Begin Roman style (i, ii, iii, iv...) page numbering
+
+%% Title Page
+%% ----------------------------------------------------------------
+\maketitle
+
+%% Declaration Page required for the Thesis, your institution may give you a different text to place here
+%% ----------------------------------------------------------------
+\doifnotproposal{
+\begin{declaration}
+  \begin{center}
+    \bf \large
+    Eidesstattliche Erkl\"{a}rung
+  \end{center}
+  Ich erkl\"{a}re hiermit an Eides Statt,
+  dass ich die vorliegende Arbeit selbstst\"{a}ndig verfasst und keine
+  anderen als die angegebenen Quellen und Hilfsmittel verwendet habe.
+
+  \begin{center}
+    \bf \large
+    Statement in Lieu of an Oath
+  \end{center}
+  I hereby confirm that I have written this thesis on my own and 
+  that I have not used any other media or materials than the ones
+  referred to in this thesis.
+
+  \vfill
+  \begin{center}
+    \bf \large
+    Einverst\"{a}ndniserkl\"{a}rung
+  \end{center}
+  Ich bin damit einverstanden, dass meine (bestandene) Arbeit in beiden 
+  Versionen in die Bibliothek der Informatik aufgenommen und damit 
+  ver\"{o}ffentlicht wird. 
+
+  \begin{center}
+    \bf \large
+    Declaration of Consent
+  \end{center}
+  I agree to make both versions of my thesis (with a passing grade) 
+  accessible to the public by having them added to the library of the
+  Computer Science Department.
+
+  \vfill
+  \vfill
+   
+  Datum/Date:\\
+  \rule[1em]{25em}{0.5pt}  % This prints a line to write the date
+
+  Unterschrift/Signature:\\
+  \rule[1em]{25em}{0.5pt}  % This prints a line for the signature
+   
+\end{declaration}
+  \cleardoublepage  % Declaration ended, now start a new page
+}
+
+%% The Abstract Page
+%% ----------------------------------------------------------------
+\begin{abstract}
+	\input{\chapterpath Abstract}
+\end{abstract}
+
+\doifnotproposal{
+
+%% The Acknowledgements page, for thanking everyone
+%% ----------------------------------------------------------------
+\begin{acknowledgements}
+
+Thx Mom+Dad $<3$
+
+\end{acknowledgements}
+\cleardoublepage
+}
+
+%% Table of Contents
+%% ----------------------------------------------------------------
+
+\tableofcontents
+\clearpage
+
+%% The Dedication page
+%% ----------------------------------------------------------------
+\doifnotproposal{
+  \thispagestyle{empty}  % Page style needs to be empty for this page
+  \dedicatory{Dedicated to WHATEVER.}
+}
+
+\mainmatter	  % Begin normal, numeric (1,2,3...) page numbering
+
+%% Chapters
+%% ----------------------------------------------------------------
+% Include the chapters of the thesis, as separate files (careful of case-sensitivity and spaces in filenames)
+% Capitalized chaptertitles generally look better
+
+\loadchapter{Introduction}{This is a Chapter title}
+\loadchapter{Motivation}{Motivation}
+
+
+\clearpage
+
+%% Appendices
+%% ----------------------------------------------------------------
+\appendix
+
+%\input{./Appendices/AppendixA}	% Appendix Title
+
+%\input{./Appendices/AppendixB} % Appendix Title
+
+%\input{./Appendices/AppendixC} % Appendix Title
+
+
+\backmatter
+
+%% Lists of figures and tables
+%% ----------------------------------------------------------------
+\doifnotproposal{
+	\lhead{\emph{List of Figures}}
+	\addtotoc{List of Figures}
+	\listoffigures
+	\clearpage
+
+  	\addtotoc{List of Tables}
+  	\lhead{\emph{List of Tables}}
+	\listoftables
+	\clearpage
+}
+
+%% Bibliography
+%% ----------------------------------------------------------------
+\label{Bibliography}
+\addtotoc{Bibliography}
+\lhead{\emph{Bibliography}}  % Change the left side page header to "Bibliography"
+\bibliographystyle{unsrtnat}  % Use the "unsrtnat" BibTeX style for formatting the Bibliography
+\bibliography{Bibliography}  % The references (bibliography) information are stored in the file named "Bibliography.bib"
+
+\end{document}  % The End
