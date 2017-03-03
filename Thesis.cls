@@ -132,7 +132,7 @@
   {\parindent \z@   
     \normalfont
     \hrule                                           % horizontal line
-    \vspace{5pt}                                     % add some vertical space
+    \vspace{15pt}                                     % add some vertical space
     \interlinepenalty\@M
     \Huge \scshape #1\par                            % chapter title
     \vspace{5pt}                                     % add some vertical space
