@@ -238,7 +238,9 @@
       \smallskip
       {\large Advisor: \advname \par}
       \smallskip
-      {\large Reviewers: \examname \par}
+      \doifnotproposal{
+        {\large Reviewers: \examname \par}
+      }
       \bigskip
       {\large \@date \par}
       \bigskip
