@@ -24,11 +24,11 @@ If you want to build it by hand use bibtex to generate the bibliography and buil
 ### Can I use this to write my Thesis?
 Sure.
 
-### Can I make adjustments to the temnplate and redistribute it?
+### Can I make adjustments to the template and redistribute it?
 Sure.
 
 ### I don't know how to use this can you help me?
-Nope. Google probably can help with most of your troubles. This is template requires basic latex knowledge to use. If you want to extend the documentation you can submit a pull request though.
+Nope. Google probably can help with most of your troubles. This template requires basic latex knowledge to use. If you want to extend the documentation you can submit a pull request though.
 
 ### I found a bug/problem
 Feel free to open an issue and/or pull request.
