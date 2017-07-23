@@ -24,6 +24,7 @@
 \LoadClass{\baseclass}
 
 \newcommand{\setchapterpath}[1]{\def\chapterpath{#1}}
+\newcommand{\setappendixpath}[1]{\def\appendixpath{#1}}
 
 \usepackage{ifthen}
 \newboolean{proposal}
@@ -165,12 +166,29 @@
 \pdfstringdefDisableCommands{
    \let\\\space
 }
+
+\newcommand*{\beginappendix}{
+  \def\@chapapp{Appendix}
+
+  \setcounter{chapter}{1}
+\renewcommand{\thechapter}{\Alph{chapter}}
+}
+
 \newcommand*{\loadchapter}[2]{
   \chapter{#2}
   \lhead{Chapter \thechapter. \emph{#2}} 
   \label{chapter:#1}
   \input{\chapterpath #1}
 }
+
+\newcommand*{\loadappendix}[2]{
+  \chapter{#2}
+  \lhead{Appendix \thechapter. \emph{#2}}
+  \label{appendix:#1}
+  \input{\appendixpath #1}
+}
+
+
 
 \def\revisionstring{}
 \newcommand*{\revision}[1]{\def\revisionstring{Revision: #1}}
@@ -179,6 +197,7 @@
 \newcommand*{\supervisor}[1]{\def\supname{#1}}
 \newcommand*{\advisor}[1]{\def\advname{#1}}
 \newcommand*{\examiner}[1]{\def\examname{#1}}
+\newcommand*{\secondexaminer}[1]{\def\secondexamname{#1}}
 \newcommand*{\degree}[1]{\def\degreename{#1}}
 \newcommand*{\thesiskind}[1]{\def\thesisname{#1}}
 \newcommand*{\authors}[1]{\def\authornames{#1}}
@@ -217,16 +236,12 @@
       \setlength{\parskip}{0pt}
       {\LARGE \bf \TITLE \par}
       \smallskip
-      {\authornames \par}
-      \bigskip
-      \bigskip
-      \bigskip
-      \bigskip
-      {\Large \thesisname \par}
-      \bigskip
-      \bigskip
-      \bigskip
-      \bigskip
+      by \\
+	 
+	  {\large \textbf{\authornames} \\[1cm]}
+
+      {\Large \textbf{\thesisname} \\[1cm]}
+
       {\large \groupname \par}
       {\large \facname \par}
       {\large \deptname \par}
@@ -234,19 +249,16 @@
       \bigskip
       \bigskip
       \bigskip
-      {\large Supervisor: \supname \par}
+      {\large Supervisor \\ \textbf{\supname} \\[0.6cm]}
       \smallskip
-      {\large Advisor: \advname \par}
+      {\large Advisor \\ \textbf{\advname} \\[1.1cm]}
       \smallskip
       \doifnotproposal{
-        {\large Reviewers: \examname \par}
+        {\large Reviewers \\ \textbf{\examname} \\ \textbf{\secondexamname} \\[0.75cm] }
       }
       \bigskip
-      {\large \@date \par}
-      \bigskip
-      \bigskip
-      \bigskip
-      \bigskip
+      {\large \@date \\[0.8cm]}
+
       {\includegraphics[height=2cm]{UniLogo.pdf} \par}
       \bigskip
       {\tiny \revisionstring}
