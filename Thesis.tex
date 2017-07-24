@@ -8,6 +8,7 @@
 \documentclass[a4paper, 11pt, twoside]{Thesis}  % Use the "Thesis" style defined in Thesis.cls
 \graphicspath{{./Figures/}}  % Location of the graphics files (set up for graphics to be in PDF format)
 \setchapterpath{./Chapters/}
+\setappendixpath{./Appendices/}
 
 % Include any extra LaTeX packages required
 \usepackage[square, numbers, comma, sort&compress]{natbib}  % Use the "Natbib" style for the references in the Bibliography
@@ -43,6 +44,7 @@
 \supervisor  {Your Supervisor}
 \advisor     {Your Advisor}
 \examiner    {Who will be grading your thesis}
+\secondexaminer {The second person grading your thesis}
 \degree      {Master of Science}
 \thesiskind  {Master Thesis}
 \authors     {Your name}
@@ -197,4 +199,6 @@ Thx Mom+Dad $<3$
 \bibliographystyle{unsrtnat}  % Use the "unsrtnat" BibTeX style for formatting the Bibliography
 \bibliography{Bibliography}  % The references (bibliography) information are stored in the file named "Bibliography.bib"
 
+\beginappendix %Begins the appendix
+\loadappendix{Appendix}{This is my appendix}
 \end{document}  % The End
