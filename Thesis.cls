@@ -324,6 +324,7 @@
 \addtocounter{secnumdepth}{1}
 \setcounter{tocdepth}{2}
 \newcommand\addtotoc[1]{
+  \phantomsection
   \addcontentsline{toc}{chapter}{#1}
 }
 \renewcommand\tableofcontents{
